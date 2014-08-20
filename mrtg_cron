@@ -67,4 +67,4 @@
 #   * * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_mysql_R410-51_52.cfg
 # * * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_mysql_R410-x.cfg
 
-#	*/5 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg.cfg --lock-file /var/lock/mrtg/mrtg_l --confcache-file /var/lib/mrtg/mrtg.ok
+# */5 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg.cfg --lock-file /var/lock/mrtg/mrtg_l --confcache-file /var/lib/mrtg/mrtg.ok
