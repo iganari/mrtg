@@ -12,10 +12,11 @@
 # */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_temp.cfg
 
 # 2r
-  */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_tr.cfg
-  */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_la.cfg
-  */30 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_hdd.cfg
-  */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_mem.cfg
+   */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_tr.cfg
+   */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_la.cfg
+   */30 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_hdd.cfg
+03-59/5 * * * * root rm -f /var/lib/mrtg/thresh/2r/hdd/mrtg_2r_hdd.cfg.stat-hdd-se01-aucfan.threshmaxI
+   */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_mem.cfg
 # */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_2r_temp.cfg
 
 # 3r
