@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# created 2014/08/21
+
+## 再構築につき一旦コメントアウト 20141018
+## cp -apf /etc/mrtg/mrtg_cron /etc/cron.d/mrtg_cron
