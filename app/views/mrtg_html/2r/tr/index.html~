@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+    <TITLE>MRTG Index Page</TITLE>
+    <!-- Command line is easier to read using "View Page Properties" of your browser -->
+    <!-- But not all browsers show that information. :-(                             -->
+    <META NAME="Command-Line" CONTENT="/usr/bin/indexmaker ./mrtg_2r_tr.cfg">
+    <META HTTP-EQUIV="Refresh" CONTENT="300">
+    <META HTTP-EQUIV="Cache-Control" content="no-cache">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="Wed, 09 Jan 2008 09:48:57 GMT">
+    
+<style type="text/css">
+<!--
+/* commandline was: /usr/bin/indexmaker ./mrtg_2r_tr.cfg */
+/* sorry, no style, just abusing this to place the commandline and pass validation */
+-->
+</style>
+</HEAD>
+
+<BODY bgcolor="#ffffff" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+
+
+<H1>MRTG Index Page</H1>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=10>
+<tr>
+<td><DIV><B> Traffic LAN2 on rt2.aucfan.com (58.59.248.33)</B></DIV>
+<DIV><A HREF="tr2-rt2-aucfan.html"><IMG BORDER=1 ALT="tr2-rt2-aucfan Traffic Graph" SRC="tr2-rt2-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-rt2-aucfan.html" --></SMALL></DIV>
+</td><td><DIV><B> Traffic LAN1 on rt2.aucfan.com  (58.59.248.33)</B></DIV>
+<DIV><A HREF="tr1-rt2-aucfan.html"><IMG BORDER=1 ALT="tr1-rt2-aucfan Traffic Graph" SRC="tr1-rt2-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-rt2-aucfan.html" --></SMALL></DIV>
+</td></tr>
+<tr>
+<td><DIV><B> Traffic LAN2 on rt1.vpn.trd (60.43.34.230)</B></DIV>
+<DIV><A HREF="tr2-rt1-vpn.html"><IMG BORDER=1 ALT="tr2-rt1-vpn Traffic Graph" SRC="tr2-rt1-vpn-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-rt1-vpn.html" --></SMALL></DIV>
+</td><td><DIV><B> Traffic1 on rt1.vpn.trd (192.168.2.1)</B></DIV>
+<DIV><A HREF="tr1-rt1-vpn.html"><IMG BORDER=1 ALT="tr1-rt1-vpn Traffic Graph" SRC="tr1-rt1-vpn-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-rt1-vpn.html" --></SMALL></DIV>
+</td></tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on bt01.aucfan.com (58.59.248.34)</B></DIV>
+<DIV><A HREF="tr1-bt01-aucfan.html"><IMG BORDER=1 ALT="tr1-bt01-aucfan Traffic Graph" SRC="tr1-bt01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-bt01-aucfan.html" --></SMALL></DIV>
+</td><td><DIV><B>Traffic LAN2 on bt01.aucfan.com (192.168.2.34)</B></DIV>
+<DIV><A HREF="tr2-bt01-aucfan.html"><IMG BORDER=1 ALT="tr2-bt01-aucfan Traffic Graph" SRC="tr2-bt01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-bt01-aucfan.html" --></SMALL></DIV>
+</td></tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ds05.aucfan.com (58.59.248.35)</B></DIV>
+<DIV><A HREF="tr1-ds05-aucfan.html"><IMG BORDER=1 ALT="tr1-ds05-aucfan Traffic Graph" SRC="tr1-ds05-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ds05-aucfan.html" --></SMALL></DIV>
+</td><td><DIV><B>Traffic LAN2 on ds05.aucfan.com (192.168.2.35)</B></DIV>
+<DIV><A HREF="tr2-ds05-aucfan.html"><IMG BORDER=1 ALT="tr2-ds05-aucfan Traffic Graph" SRC="tr2-ds05-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ds05-aucfan.html" --></SMALL></DIV>
+</td></tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ds06.aucfan.com (58.59.248.36)</B></DIV>
+<DIV><A HREF="tr1-ds06-aucfan.html"><IMG BORDER=1 ALT="tr1-ds06-aucfan Traffic Graph" SRC="tr1-ds06-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ds06-aucfan.html" --></SMALL></DIV>
+</td><td><DIV><B>Traffic LAN2 on ds06.aucfan.com (192.168.2.36)</B></DIV>
+<DIV><A HREF="tr2-ds06-aucfan.html"><IMG BORDER=1 ALT="tr2-ds06-aucfan Traffic Graph" SRC="tr2-ds06-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ds06-aucfan.html" --></SMALL></DIV>
+</td></tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ds07.aucfan.com (58.59.248.37)</B></DIV>
+<DIV><A HREF="tr1-ds07-aucfan.html"><IMG BORDER=1 ALT="tr1-ds07-aucfan Traffic Graph" SRC="tr1-ds07-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ds07-aucfan.html" --></SMALL></DIV>
+</td><td><DIV><B>Traffic LAN2 on ds07.aucfan.com (192.168.2.37)</B></DIV>
+<DIV><A HREF="tr2-ds07-aucfan.html"><IMG BORDER=1 ALT="tr2-ds07-aucfan Traffic Graph" SRC="tr2-ds07-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ds07-aucfan.html" --></SMALL></DIV>
+</td></tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on is01.aucfan.com (58.59.248.38)</B></DIV>
+<DIV><A HREF="tr1-is01-aucfan.html"><IMG BORDER=1 ALT="tr1-is01-aucfan Traffic Graph" SRC="tr1-is01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-is01-aucfan.html" --></SMALL></DIV>
+</td><td><DIV><B>Traffic LAN2 on is01.aucfan.com (192.168.2.38)</B></DIV>
+<DIV><A HREF="tr2-is01-aucfan.html"><IMG BORDER=1 ALT="tr2-is01-aucfan Traffic Graph" SRC="tr2-is01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-is01-aucfan.html" --></SMALL></DIV>
+</td></tr>
+<tr>
+<td></td>
+<td><DIV><B>Traffic LAN2 on bk01.aucfan.com (192.168.2.141)</B></DIV>
+<DIV><A HREF="tr2-bk01-aucfan.html"><IMG BORDER=1 ALT="tr2-bk01-aucfan Traffic Graph" SRC="tr2-bk01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-bk01-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+
+<tr>
+<td>
+<DIV><B>Traffic LAN2 on bk02.aucfan.com (192.168.2.142)</B></DIV>
+<DIV><A HREF="tr2-bk02-aucfan.html"><IMG BORDER=1 ALT="tr2-bk02-aucfan Traffic Graph" SRC="tr2-bk02-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-bk02-aucfan.html" --></SMALL></DIV>
+</td>
+<td>
+<DIV><B>Traffic LAN2 on bk03.aucfan.com (192.168.2.143)</B></DIV>
+<DIV><A HREF="tr2-bk03-aucfan.html"><IMG BORDER=1 ALT="tr2-bk03-aucfan Traffic Graph" SRC="tr2-bk03-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-bk03-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+
+
+
+<tr>
+<td><DIV><B>Traffic LAN1 on it01.aucfan.com (58.59.248.39)</B></DIV>
+<DIV><A HREF="tr1-it01-aucfan.html"><IMG BORDER=1 ALT="tr1-it01-aucfan Traffic Graph" SRC="tr1-it01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-it01-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on it01.aucfan.com (192.168.2.39)</B></DIV>
+<DIV><A HREF="tr2-it01-aucfan.html"><IMG BORDER=1 ALT="tr2-it01-aucfan Traffic Graph" SRC="tr2-it01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-it01-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on it02.aucfan.com (58.59.248.40)</B></DIV>
+<DIV><A HREF="tr1-it02-aucfan.html"><IMG BORDER=1 ALT="tr1-it02-aucfan Traffic Graph" SRC="tr1-it02-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-it02-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on it02.aucfan.com (192.168.2.40)</B></DIV>
+<DIV><A HREF="tr2-it02-aucfan.html"><IMG BORDER=1 ALT="tr2-it02-aucfan Traffic Graph" SRC="tr2-it02-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-it02-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+
+
+<tr>
+<td><DIV><B>Traffic LAN1 on ps01.aucfan.com (60.36.190.38)</B></DIV>
+<DIV><A HREF="tr1-ps01-aucfan.html"><IMG BORDER=1 ALT="tr1-ps01-aucfan Traffic Graph" SRC="tr1-ps01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps01-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps01.aucfan.com (192.168.2.201)</B></DIV>
+<DIV><A HREF="tr2-ps01-aucfan.html"><IMG BORDER=1 ALT="tr2-ps01-aucfan Traffic Graph" SRC="tr2-ps01-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps01-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ps02.aucfan.com (60.36.190.39)</B></DIV>
+<DIV><A HREF="tr1-ps02-aucfan.html"><IMG BORDER=1 ALT="tr1-ps02-aucfan Traffic Graph" SRC="tr1-ps02-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps02-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps02.aucfan.com (192.168.2.202)</B></DIV>
+<DIV><A HREF="tr2-ps02-aucfan.html"><IMG BORDER=1 ALT="tr2-ps02-aucfan Traffic Graph" SRC="tr2-ps02-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps02-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ps03.aucfan.com (60.36.190.40)</B></DIV>
+<DIV><A HREF="tr1-ps03-aucfan.html"><IMG BORDER=1 ALT="tr1-ps03-aucfan Traffic Graph" SRC="tr1-ps03-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps03-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps03.aucfan.com (192.168.2.203)</B></DIV>
+<DIV><A HREF="tr2-ps03-aucfan.html"><IMG BORDER=1 ALT="tr2-ps03-aucfan Traffic Graph" SRC="tr2-ps03-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps03-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ps04.aucfan.com (60.36.190.41)</B></DIV>
+<DIV><A HREF="tr1-ps04-aucfan.html"><IMG BORDER=1 ALT="tr1-ps04-aucfan Traffic Graph" SRC="tr1-ps04-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps04-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps04.aucfan.com (192.168.2.204)</B></DIV>
+<DIV><A HREF="tr2-ps04-aucfan.html"><IMG BORDER=1 ALT="tr2-ps04-aucfan Traffic Graph" SRC="tr2-ps04-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps04-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ps05.aucfan.com (60.36.190.42)</B></DIV>
+<DIV><A HREF="tr1-ps05-aucfan.html"><IMG BORDER=1 ALT="tr1-ps05-aucfan Traffic Graph" SRC="tr1-ps05-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps05-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps05.aucfan.com (192.168.2.205)</B></DIV>
+<DIV><A HREF="tr2-ps05-aucfan.html"><IMG BORDER=1 ALT="tr2-ps05-aucfan Traffic Graph" SRC="tr2-ps05-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps05-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ps06.aucfan.com (60.36.190.43)</B></DIV>
+<DIV><A HREF="tr1-ps06-aucfan.html"><IMG BORDER=1 ALT="tr1-ps06-aucfan Traffic Graph" SRC="tr1-ps06-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps06-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps06.aucfan.com (192.168.2.206)</B></DIV>
+<DIV><A HREF="tr2-ps06-aucfan.html"><IMG BORDER=1 ALT="tr2-ps06-aucfan Traffic Graph" SRC="tr2-ps06-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps06-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ps07.aucfan.com (60.36.190.44)</B></DIV>
+<DIV><A HREF="tr1-ps07-aucfan.html"><IMG BORDER=1 ALT="tr1-ps07-aucfan Traffic Graph" SRC="tr1-ps07-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps07-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps07.aucfan.com (192.168.2.207)</B></DIV>
+<DIV><A HREF="tr2-ps07-aucfan.html"><IMG BORDER=1 ALT="tr2-ps07-aucfan Traffic Graph" SRC="tr2-ps07-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps07-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+<tr>
+<td><DIV><B>Traffic LAN1 on ps08.aucfan.com (60.36.190.45)</B></DIV>
+<DIV><A HREF="tr1-ps08-aucfan.html"><IMG BORDER=1 ALT="tr1-ps08-aucfan Traffic Graph" SRC="tr1-ps08-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr1-ps08-aucfan.html" --></SMALL></DIV>
+</td>
+<td><DIV><B>Traffic LAN2 on ps08.aucfan.com (192.168.2.208)</B></DIV>
+<DIV><A HREF="tr2-ps08-aucfan.html"><IMG BORDER=1 ALT="tr2-ps08-aucfan Traffic Graph" SRC="tr2-ps08-aucfan-day.png"></A><BR>
+<SMALL><!--#flastmod file="tr2-ps08-aucfan.html" --></SMALL></DIV>
+</td>
+</tr>
+
+
+
+</TABLE>
+
+<BR>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+  <TR>
+    <TD WIDTH=63><A
+    HREF="http://www.ee.ethz.ch/~oetiker/webtools/mrtg/"><IMG
+    BORDER=0 SRC="mrtg-l.png" WIDTH=63 HEIGHT=25 ALT="MRTG"></A></TD>
+    <TD WIDTH=25><A
+    HREF="http://www.ee.ethz.ch/~oetiker/webtools/mrtg/"><IMG
+    BORDER=0 SRC="mrtg-m.png" WIDTH=25 HEIGHT=25 ALT=""></A></TD>
+    <TD WIDTH=388><A
+    HREF="http://www.ee.ethz.ch/~oetiker/webtools/mrtg/"><IMG
+    BORDER=0 SRC="mrtg-r.png" WIDTH=388 HEIGHT=25
+    ALT="Multi Router Traffic Grapher"></A></TD>
+  </TR>
+</TABLE>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+  <TR VALIGN=top>
+  <TD WIDTH=88 ALIGN=RIGHT><FONT FACE="Arial,Helvetica" SIZE=2>
+  version 2.10.15</FONT></TD>
+  <TD WIDTH=388 ALIGN=RIGHT><FONT FACE="Arial,Helvetica" SIZE=2>
+  <A HREF="http://www.ee.ethz.ch/~oetiker/">Tobias Oetiker</A>
+  <A HREF="mailto:oetiker@ee.ethz.ch">&lt;oetiker@ee.ethz.ch&gt;</A>
+  and&nbsp;<A HREF="http://www.bungi.com/">Dave&nbsp;Rand</A>&nbsp;<A HREF="mailto:dlr@bungi.com">&lt;dlr@bungi.com&gt;</A></FONT>
+  </TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

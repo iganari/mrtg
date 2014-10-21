@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<style type="text/css">
+
+		body {
+			width : 6000px;
+		}
+
+		.server_area {
+			list-style : none ;
+			clear      : both ;
+			display    : none ;
+		}
+
+		.btn_area {
+			width  : 100% ;
+			height : 100% ;
+			text-align : left ;
+			margin     : 10px ;
+		}
+
+		.show_hide_btn {
+			width     : 80px;
+			font-size : 12px;
+			margin    : 2px;
+		}
+
+		.graph_area {
+			width        : 520px  ;
+			height       : 180px  ;
+			text-align   : center ;
+			border-style : solid  ;
+			border-width : 1px    ;
+			margin       : 10px   ;
+			float        : left   ;
+		}
+
+		.title       { font-weight:bold; font-size:1.0em; }
+		.server_name { font-weight:bold; font-size:1.5em; }
+
+		.no_data {
+			width      : 100%     ;
+			height     : 100%     ;
+			text-align : center   ;
+			position   : relative ;
+			top        : 10%      ;
+			font-color : gray     ;
+		}
+
+	</style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+	<div id="button_area"></div>
+	<div id="graph_area"></div>
+</body>
+<script type="text/javascript" src="http://aucfan.com/inc/jquery.js"></script>
+<script type="text/javascript">
+$(
+	function ( ) {
+
+		var button_area = $("#button_area");
+		var graph_area  = $("#graph_area");
+
+		var ary_graph_list = [ 'tr1' , 'tr2' , 'la' , 'stat-mem' , 'stat-mem-cb' , 'stat-hdd' , 'cputemp' , 'mbtemp' ] ;
+		var ary_graph_list_length = ary_graph_list.length ;
+
+		var group_id_list     = {};
+		var group_sub_id_list = {};
+		var rack_number_list  = {};
+
+		var btn        = {};
+		var graph      = {};
+		var graph_html = {} ;
+
+		var mrtg_info = {
+			'graph_title' : {
+				'tr1'         : 'LAN1'            ,
+				'tr2'         : 'LAN2'            ,
+				'la'          : 'Load Average'    ,
+				'stat-mem'    : 'Memory'          ,
+				'stat-mem-cb' : 'Memory C/B'      ,
+				'stat-hdd'    : 'HDD'             ,
+				'cputemp'     : 'CPU Temperature' ,
+				'mbtemp'      : 'M/B Temperature'
+			}
+			,
+			'graph_type' : {
+				'tr1'         : 'tr'   ,
+				'tr2'         : 'tr'   ,
+				'la'          : 'la'   ,
+				'stat-mem'    : 'mem'  ,
+				'stat-mem-cb' : 'mem'  ,
+				'stat-hdd'    : 'hdd'  ,
+				'cputemp'     : 'temp' ,
+				'mbtemp'      : 'temp'
+			}
+		};
+
+		var servser_list = {
+			'lb01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-lb'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : false , 'la' : true  , 'stat-mem' : false , 'stat-mem-cb' : false , 'stat-hdd' : false , 'cputemp' : false , 'mbtemp' : false } } ,
+			'lb02'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-lb'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : false , 'la' : true  , 'stat-mem' : false , 'stat-mem-cb' : false , 'stat-hdd' : false , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ssl01'    : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ssl'     , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ssl02'    : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ssl'     , 'rack_number' : 2 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws02'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws03'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws04'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws05'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws06'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws07'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws08'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws09'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ws10'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ws'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ps01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ps02'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ps03'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ps04'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ps05'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ps06'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ps07'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ps08'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ps'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ss02'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss03'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss04'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss05'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss06'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss07'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss08'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss09'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ss10'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ss'      , 'rack_number' : 1 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ds01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ds'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ds02'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ds'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ds03'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ds'      , 'rack_number' : 1 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ds05'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ds'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ds06'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ds'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'ds07'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ds'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'cws01'    : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-cws'     , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'snap'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-snap'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : false , 'stat-mem-cb' : false , 'stat-hdd' : false , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ts01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ts'      , 'rack_number' : 3 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : false , 'stat-mem' : false , 'stat-mem-cb' : false , 'stat-hdd' : false , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ts02'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ts'      , 'rack_number' : 3 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : false , 'stat-mem' : false , 'stat-mem-cb' : false , 'stat-hdd' : false , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ts03'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-ts'      , 'rack_number' : 3 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : false , 'stat-mem' : false , 'stat-mem-cb' : false , 'stat-hdd' : false , 'cputemp' : false , 'mbtemp' : false } } ,
+			'is01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-is'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'bt01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-bt'      , 'rack_number' : 2 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'bk01'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-bk'      , 'rack_number' : 2 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'bk03'     : { 'group_id' : 'aucfan'   , 'group_sub_id' : 'aucfan-bk'      , 'rack_number' : 2 , 'graph' : { 'tr1' : false , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : true  , 'mbtemp' : true  } } ,
+			'f01ws01'  : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-ws'     , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01ws02'  : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-ws'     , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01fdb01' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-fdb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01fdb02' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-fdb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01bdb01' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-bdb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01bdb02' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-bdb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01bdb03' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-bdb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01bdb04' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-bdb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01udb01' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-udb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'f01udb02' : { 'group_id' : 'aucdata'  , 'group_sub_id' : 'aucdata-udb'    , 'rack_number' : 3 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'wspf01'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-wspf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'wspf02'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-wspf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'sspf01'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-sspf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'sspf02'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-sspf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'dspf01'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-dspf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'dspf02'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-dspf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'crpf01'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-crpf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'crpf02'   : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-crpf'  , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'wsapi01'  : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-wsapi' , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'wsapi02'  : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-wsapi' , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ssapi01'  : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-ssapi' , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+			'ssapi02'  : { 'group_id' : 'pricefan' , 'group_sub_id' : 'pricefan-ssapi' , 'rack_number' : 4 , 'graph' : { 'tr1' : true  , 'tr2' : true  , 'la' : true  , 'stat-mem' : true  , 'stat-mem-cb' : true  , 'stat-hdd' : true  , 'cputemp' : false , 'mbtemp' : false } } ,
+		};
+
+		for ( var server_name in servser_list ) {
+			servser_list[server_name].snmp_comunity_name_base = server_name + "-aucfan" ;
+			group_id_list[     servser_list[server_name]['group_id']     ] = true ;
+			group_sub_id_list[ servser_list[server_name]['group_sub_id'] ] = servser_list[server_name]['group_id'] ;
+			rack_number_list[  servser_list[server_name]['rack_number']  ] = true ;
+		}
+
+		for ( var server_name in servser_list ) {
+
+			graph_html[server_name] = {} ;
+			graph_html[server_name].all_graph = "<ul class='server_area " + servser_list[server_name]['group_id'] + " " + servser_list[server_name]['group_sub_id'] + " r" + servser_list[server_name]['rack_number'] + " " + server_name + "' id='" + server_name + "'>" ;
+
+			for ( var i=0 ; i<ary_graph_list_length ; i++ ) {
+
+				var x = ary_graph_list[i] ;
+
+				graph_html[server_name][x] = {} ;
+				graph_html[server_name][x]['title'] = "<span class='title'>" + mrtg_info['graph_title'][x] + " on <span class='server_name''>" + server_name + "</span></span>" ;
+
+				if ( servser_list[server_name].graph[x] == true ) {
+					graph_html[server_name][x]['image_src'] = "/" + servser_list[server_name]['rack_number'] + "r/" + mrtg_info.graph_type[x] + "/" + x + "-" +  servser_list[server_name]['snmp_comunity_name_base'] + "-day.png" ;
+					graph_html[server_name][x]['link']      = "/" + servser_list[server_name]['rack_number'] + "r/" + mrtg_info.graph_type[x] + "/" + x + "-" +  servser_list[server_name]['snmp_comunity_name_base'] + ".html"    ;
+					graph_html[server_name][x]['image_tag'] = "<img border='1' src='" + graph_html[server_name][x]['image_src'] + "'>" ;
+					graph_html[server_name][x]['a_tag']     = "<a href='"             + graph_html[server_name][x]['link']      + "' target='_blank'>" + graph_html[server_name][x]['image_tag'] + "</a>" ;
+				}
+				else {
+					graph_html[server_name][x]['image_src'] = "" ;
+					graph_html[server_name][x]['link']      = "" ;
+					graph_html[server_name][x]['image_tag'] = "" ;
+					graph_html[server_name][x]['a_tag']     = "<div class='no_data'>no-data</div>" ;
+				}
+
+				graph_html[server_name][x]['graph'] = "<li class='graph_area " + mrtg_info.graph_type[x] + " " + x + "'>" + graph_html[server_name][x]['title'] + "<br />" + graph_html[server_name][x]['a_tag'] + "</li>" + "\r\n" ;
+				graph_html[server_name].all_graph += graph_html[server_name][x]['graph'] ;
+			}
+
+			graph_html[server_name].all_graph +=  "</ul>" ;
+
+			$(graph_area).append( graph_html[server_name].all_graph );
+		}
+
+
+		for( var x in mrtg_info.graph_type ) {
+			graph[x] = {};
+		}
+
+		for( var server_name in servser_list ) {
+			graph[server_name + "_all"] = $("ul." + server_name) ;
+			if (graph[server_name + "_all"]) {
+				for( var x in mrtg_info.graph_type ) {
+					$(graph[server_name + "_all"]).find("li."+x).each( function () {
+						graph[server_name + "_" + x] = $(this);
+						graph[x][server_name]        = $(this);
+					} );
+				}
+				for( var x in group_id_list ) {
+					if (servser_list[server_name].group_id == x) {
+						graph[x] = $("ul." + x) ;
+					}
+				}
+				for( var x in group_sub_id_list ) {
+					if (servser_list[server_name].group_sub_id == x) {
+						graph[x] = $("ul." + x) ;
+					}
+				}
+			}
+		}
+
+		for( var x in rack_number_list ) {
+			graph["rack_" + x] = $("ul.r" + x) ;
+		}
+
+
+
+		btn['group_id'] = {} ;
+
+		for ( var x in group_id_list ) {
+			$(button_area).append("<div id='button_area_group_id_" + x + "' class='btn_area'></div>");
+			$("#button_area_group_id_"+x).append("<button id='group_id_" + x + "'>"+x+"</button>");
+			btn['group_id'][x] = $("#group_id_"+x).addClass("show_hide_btn show_hide_btn_group").attr( "group_id" , x ).click( function (e) {
+				for( var x in group_id_list ) {
+					if (x == $(this).attr("group_id")) {
+						$(graph[x]).show() ;
+					}
+					else {
+						$(graph[x]).hide() ;
+					}
+				}
+			} );
+		}
+
+		btn['group_sub_id'] = {} ;
+
+		for ( var x in group_sub_id_list ) {
+			$("#button_area_group_id_"+group_sub_id_list[x]).append("<button id='group_sub_id_" + x + "'>"+x+"</button>");
+			btn['group_sub_id'][x] = $("#group_sub_id_"+x).addClass("show_hide_btn").attr( "group_sub_id" , x ).click( function (e) {
+				for( var x in group_sub_id_list ) {
+					if (x == $(this).attr("group_sub_id")) {
+						$(graph[x]).show() ;
+						$(graph[group_sub_id_list.x]).show() ;
+					}
+					else {
+						$(graph[x]).hide() ;
+					}
+				}
+			} );
+		}
+
+		btn['rack_number'] = {} ;
+		$(button_area).append("<div id='button_area_rack' class='btn_area'></div>");
+
+		for ( var x in rack_number_list ) {
+
+			$("#button_area_rack").append("<button id='rack_id_" + x + "'>rack-"+x+"</button>");
+			btn['rack_number'][x] = $("#rack_id_"+x).addClass("show_hide_btn").attr( "rack_number" , x ).click( function (e) {
+				for( var x in rack_number_list ) {
+					if (x == $(this).attr("rack_number")) {
+						$(graph["rack_" + x]).show() ;
+					}
+					else {
+						$(graph["rack_" + x]).hide() ;
+					}
+				}
+			});
+		}
+
+		btn['graph_type'] = {} ;
+		$(button_area).append("<div id='graph_type' class='btn_area'></div>");
+
+		$("#graph_type").append("<button id='graph_type_all'>all</button>");
+		btn['graph_type']['all'] = $("#graph_type_all");
+		btn['graph_type']['all'].addClass("show_hide_btn");
+
+		for ( var x in ary_graph_list ) {
+			$("#graph_type").append("<button id='graph_type_" + ary_graph_list[x] + "'>" + ary_graph_list[x] + "</button>");
+			btn['graph_type'][ary_graph_list[x]] = $("#graph_type_"+ary_graph_list[x]);
+			btn['graph_type'][ary_graph_list[x]].addClass("show_hide_btn").attr( "graph_type" , x ).click( function () {
+
+
+				for ( var i=0 ; i<ary_graph_list_length ; i++ ) {
+					var x = ary_graph_list[i] ;
+
+					for( var server_name in graph[x] ) {
+
+						var parent = $(graph[x][server_name]).parent("ul");
+						if (parent) {
+							if ( $(parent).css("display") == "block" ) {
+								$(graph[x][server_name]).show() ;
+							}
+							else {
+								$(graph[x][server_name]).hide() ;
+							}
+						}
+					}
+				}
+			} );
+		}
+	}
+);
+</script>
+</html>
