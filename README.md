@@ -9,11 +9,16 @@ mrtg.gitとmrtg_html.gitの統合
 
 ## ファイル設置後にやること
 
+### crontabを編集可能にする 
+
+```
+chmod 777 /var/spool/cron
+```
 ### pull-mergeの設定
 pullした際にフックを発動させたいので.git/hooksの設定を加筆する。
 
 ```
-cp -a script/post-merge .git/hooks/
+cp -a ./script/post-merge ./.git/hooks/
 ```
 基本的はプロジェクトを設置後に一度実行するだけでよい。
 
