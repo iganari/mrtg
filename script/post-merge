@@ -2,5 +2,7 @@
 #
 # created 2014/08/21
 
-## 再構築につき一旦コメントアウト 20141018
-## cp -apf /etc/mrtg/mrtg_cron /etc/cron.d/mrtg_cron
+username=`whoami`
+
+cp -apf /deploy/mrtg/script/mrtg_cron /var/spool/cron/$username
+chmod 600 /var/spool/cron/$username
