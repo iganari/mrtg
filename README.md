@@ -17,6 +17,13 @@ sudo cp ./script/source/mrtg.conf /etc/httpd/conf.d/
 sudo service httpd restart
 ```
 
+### MRTGのインストール
+
+```
+$ sudo yum install mrtg
+$ sudo rm -rfv /etc/cron.d/mrtg
+$ sudo rm -rfv /etc/mrtg/* 
+```
 
 ### crontabを編集可能にする 
 
