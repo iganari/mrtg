@@ -7,9 +7,9 @@ Dir='/deploy/mrtg/config'
  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_hdd.cfg
 
 # 01r
- */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_tr.cfg
- */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_la.cfg
- */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_mem.cfg
+# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_tr.cfg
+# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_la.cfg
+# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_mem.cfg
  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_hdd.cfg
 
 ###  # 1r
