@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Dir='/deploy/mrtg/script'
 
 # 0r
@@ -5,6 +6,16 @@ Dir='/deploy/mrtg/script'
  */5 * * * * root LANG=C /usr/bin/mrtg $Dir/mrtg_0r_la.cfg
  */5 * * * * root LANG=C /usr/bin/mrtg $Dir/mrtg_0r_mem.cfg
  */5 * * * * root LANG=C /usr/bin/mrtg $Dir/mrtg_0r_hdd.cfg
+=======
+
+Dir='/deploy/mrtg/config'
+
+# 0r
+ */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_tr.cfg
+ */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_la.cfg
+ */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_mem.cfg
+ */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_hdd.cfg
+>>>>>>> 1fe3be25f3538a25bb9fe5ccbf9046f4ceb2614b
 
 ###  # 1r
 ###    */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_tr.cfg

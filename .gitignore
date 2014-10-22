@@ -1,2 +1,8 @@
 *.ok
+*_l
 *.swp
+*.png
+*.old
+*.log
+*.html
+!/index.html
