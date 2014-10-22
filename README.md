@@ -9,6 +9,22 @@ mrtg.gitとmrtg_html.gitの統合
 
 ## ファイル設置後にやること
 
+### httpdの設置
+
+```
+cd `dirname README | pwd`
+sudo cp ./script/source/mrtg.conf /etc/httpd/conf.d/
+sudo service httpd restart
+```
+
+### MRTGのインストール
+
+```
+$ sudo yum install mrtg
+$ sudo rm -rfv /etc/cron.d/mrtg
+$ sudo rm -rfv /etc/mrtg/* 
+```
+
 ### crontabを編集可能にする 
 
 ```
