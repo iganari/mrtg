@@ -4,3 +4,5 @@
 *.png
 *.old
 *.log
+*.html
+!/index.html
