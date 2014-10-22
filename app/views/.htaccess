@@ -1,0 +1,3 @@
+IndexOptions FancyIndexing VersionSort NameWidth=* HTMLTable Charset=EUC-JP
+AddDefaultCharset EUC-JP
+AddType "text/html; charset=EUC-JP" .html .php
