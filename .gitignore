@@ -1,2 +1,6 @@
 *.ok
+*_l
 *.swp
+*.png
+*.old
+*.log
