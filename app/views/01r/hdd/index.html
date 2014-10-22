@@ -5,7 +5,6 @@
     <style type="text/css">
       ul {
         width: 1300px;
-        list-style: none;
       }
       li {
         float: left;
@@ -18,42 +17,19 @@
   </head>
   <body>
 
-    <h3>MRTG Index Page</h1>
-    <ul>
-
-<li>HDD Status on ws01-test.aucfan.com</br> (192.168.101.52)<br /><a href="stat-hdd-ws01-test-sdc1-aucfan.html"><img src="stat-hdd-ws01-test-sdc1-aucfan-day.png" alt="stat-hdd-ws01-test-sdc1-aucfan-day"/></a></li>
-<li>HDD Status on pws01-test.aucfan.com</br> (192.168.101.62)<br /><a href="stat-hdd-pws01-test-sdc1-aucfan.html"><img src="stat-hdd-pws01-test-sdc1-aucfan-day.png" alt="stat-hdd-pws01-test-sdc1-aucfan-day"/></a></li>
-<li>HDD Status on development3.aucfan.com</br> (192.168.101.64)<br /><a href="stat-hdd-development3-sdc1-aucfan.html"><img src="stat-hdd-development3-sdc1-aucfan-day.png" alt="stat-hdd-development3-sdc1-aucfan-day"/></a></li>
-<li>HDD Status on localhost.aucfan.com</br> (192.168.101.135:/dev/sdb1)<br /><a href="stat-hdd-localhost-sdb1-aucfan.html"><img src="stat-hdd-localhost-sdb1-aucfan-day.png" alt="stat-hdd-localhost-sdb1-aucfan-day"/></a></li>
-<li>HDD Status on localhost.aucfan.com</br> (192.168.101.135:/dev/sdc1)<br /><a href="stat-hdd-localhost-sdc1-aucfan.html"><img src="stat-hdd-localhost-sdc1-aucfan-day.png" alt="stat-hdd-localhost-sdc1-aucfan-day"/></a></li>
-<li>HDD Status on devtest03.aucfan.com</br> (192.168.101.137:/dev/mapper/vg_devtest03-lv_home)<br /><a href="stat-hdd-devtest03-sdc1-aucfan.html"><img src="stat-hdd-devtest03-sdc1-aucfan-day.png" alt="stat-hdd-devtest03-sdc1-aucfan-day"/></a></li>
-<li>HDD Status on smc04.aucfan.com</br> (192.168.101.189)<br /><a href="stat-hdd-smc04-aucfan.html"><img src="stat-hdd-smc04-aucfan-day.png" alt="stat-hdd-smc04-aucfan-day"/></a></li>
-<li>HDD Status on musai.aucfan.com</br> (192.168.101.201)<br /><a href="stat-hdd-musai-aucfan.html"><img src="stat-hdd-musai-aucfan-day.png" alt="stat-hdd-musai-aucfan-day"/></a></li>
-<li>HDD Status on development2.aucfan.com</br> (192.168.101.235)<br /><a href="stat-hdd-development2-sdc1-aucfan.html"><img src="stat-hdd-development2-sdc1-aucfan-day.png" alt="stat-hdd-development2-sdc1-aucfan-day"/></a></li>
-<li>HDD Status on pwstest01.aucfan.com</br> (192.168.101.251)<br /><a href="stat-hdd-pwstest01-sdc1-aucfan.html"><img src="stat-hdd-pwstest01-sdc1-aucfan-day.png" alt="stat-hdd-pwstest01-sdc1-aucfan-day"/></a></li>
-<li>HDD Status on test-svr.aucfan.com</br> (192.168.101.41)<br /><a href="stat-hdd-test-svr-aucfan.html"><img src="stat-hdd-test-svr-aucfan-day.png" alt="stat-hdd-test-svr-aucfan-day"/></a></li>
-<li>HDD Status on test-monitor-svr.aucfan.com</br> (192.168.101.42)<br /><a href="stat-hdd-test-monitor-svr-aucfan.html"><img src="stat-hdd-test-monitor-svr-aucfan-day.png" alt="stat-hdd-test-monitor-svr-aucfan-day"/></a></li>
-<li>HDD Status on repo-svr.aucfan.com</br> (192.168.101.43)<br /><a href="stat-hdd-repo-svr-aucfan.html"><img src="stat-hdd-repo-svr-aucfan-day.png" alt="stat-hdd-repo-svr-aucfan-day"/></a></li>
-<li>HDD Status on higashiosaka.aucfan.com</br> (192.168.101.47)<br /><a href="stat-hdd-higashiosaka-aucfan.html"><img src="stat-hdd-higashiosaka-aucfan-day.png" alt="stat-hdd-higashiosaka-aucfan-day"/></a></li>
-<li>HDD Status on sakai.aucfan.com</br> (192.168.101.48)<br /><a href="stat-hdd-sakai-aucfan.html"><img src="stat-hdd-sakai-aucfan-day.png" alt="stat-hdd-sakai-aucfan-day"/></a></li>
-<li>HDD Status on osaka.aucfan.com</br> (192.168.101.49)<br /><a href="stat-hdd-osaka-aucfan.html"><img src="stat-hdd-osaka-aucfan-day.png" alt="stat-hdd-osaka-aucfan-day"/></a></li>
-
-
-
+<h1>MRTG Index Page</h1>
+<table cellspacing=10>
 <tr>
   <td>
-    <div>
-      <b> Load Average on uranus.aucfan.com </b><br/>(192.168.101.11)<br/>
-      <a href="./stat-hdd-ws01-test-sdc1-aucfan.html"><img border="1" alt="test" src="stat-hdd-ws01-test-sdc1-aucfan-day.png"></a>
-    </div>
+    <div><b> HDD Status on ws01-test.aucfan.com</br> (192.168.101.52) </b></div>
+    <div><a href="hdd-ws01-test-sdc1-aucfan.html"><img border="1" alt="hdd-ws01-test Graph" src="hdd-ws01-test-sdc1-aucfan-day.png"></a></div>
   </td>
   <td>
-    <div>
-      <b> HDD Status on uranus.aucfan.com </b>
-    </div>
-    <div>
-      <a href="hdd/stat-hdd-uranus-aucfan.html"><img border="1" alt="stat-hdd-uranus-aucfan Traffic Graph" src="hdd/stat-hdd-uranus-aucfan-day.png"></a>
-    </div>
-  </td>
+    <div><b> HDD Status on pws01-test.aucfan.com</br> (192.168.101.62) </b></div>
+    <div><a href="hdd-pws01-test-sdc1-aucfan.html"><img border="1" alt="hdd-pws01-test Graph" src="hdd-pws01-test-sdc1-aucfan-day.png"></a></div>
+  </td>  
 </tr>
 
+</table>
+</body>
+</html>
