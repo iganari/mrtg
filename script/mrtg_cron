@@ -5,6 +5,7 @@ Dir='/deploy/mrtg/config'
 */5 * * * *  sh $Dir/seg_4/hdd/cron-seg_4-hdd.sh
 */5 * * * *  sh $Dir/seg_4/la/cron-seg_4-la.sh
 */5 * * * *  sh $Dir/seg_4/mem/cron-seg_4-mem.sh
+*/5 * * * *  sh $Dir/seg_4/tr/cron-seg_4-tr.sh
 
 # 0r
 #  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_tr.cfg
