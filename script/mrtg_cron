@@ -2,7 +2,8 @@ Dir='/deploy/mrtg/config'
 
 #  m h d 
 # seg-4
-*/5 * * * *  LANG=C /usr/bin/mrtg $Dir/seg-4/hdd/*.cfg
+*/5 * * * *  sh $Dir/seg_4/hdd/cron-seg_4-hdd.sh
+*/5 * * * *  sh $Dir/seg_4/la/cron-seg_4-la.sh
 
 # 0r
 #  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_tr.cfg
