@@ -25,6 +25,9 @@ read key
         PRIIP=`echo $ansip | sed -e "s/\./_/g"`
         HOST="$anshost"
         cp -a ./PRIVATEIP-HOSTNAME-hdd.cfg ./$PRIIP-$HOST-hdd.cfg
+        cp -a ./PRIVATEIP-HOSTNAME-mem.cfg ./$PRIIP-$HOST-mem.cfg
+        cp -a ./PRIVATEIP-HOSTNAME-la.cfg ./$PRIIP-$HOST-la.cfg
+        cp -a ./PRIVATEIP-HOSTNAME-tr.cfg ./$PRIIP-$HOST-tr.cfg
 
 
     else
