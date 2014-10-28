@@ -1,6 +1,14 @@
+MAILTO="igarashi@aucfan.com"
 Dir='/deploy/mrtg/config'
 
 #  m h d 
+# seg-4
+*/5 * * * *  sh $Dir/seg_4/hdd/cron-seg_4-hdd.sh
+*/5 * * * *  sh $Dir/seg_4/la/cron-seg_4-la.sh
+*/5 * * * *  sh $Dir/seg_4/mem/cron-seg_4-mem.sh
+*/5 * * * *  sh $Dir/seg_4/tr/cron-seg_4-tr.sh
+*/5 * * * *  LANG=C /usr/bin/mrtg $Dir/seg_4/tr/192_168_4_46-pws09-tr.cfg
+
 # 0r
 #  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_tr.cfg
 #  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_la.cfg
@@ -9,9 +17,9 @@ Dir='/deploy/mrtg/config'
 
 # 01r
 # */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_tr.cfg
- */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_la.cfg
- */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_mem.cfg
- */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_hdd.cfg
+# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_la.cfg
+# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_mem.cfg
+# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_hdd.cfg
 
 ###  # 1r
 ###    */5  * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_tr.cfg

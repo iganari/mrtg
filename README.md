@@ -25,7 +25,7 @@ $ sudo service httpd restart
 ### crontabを編集可能にする 
 
 ```
-chmod 777 /var/spool/cron
+$ sudo chmod 777 /var/spool/cron
 ```
 ### pull-mergeの設定
 pullした際にフックを発動させたいので.git/hooksの設定を加筆する。
@@ -34,4 +34,6 @@ pullした際にフックを発動させたいので.git/hooksの設定を加筆
 cp -a ./script/source/post-merge ./.git/hooks/
 ```
 基本的はプロジェクトを設置後に一度実行するだけでよい。
+
+
 
