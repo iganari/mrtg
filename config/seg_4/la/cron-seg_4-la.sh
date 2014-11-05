@@ -37,3 +37,4 @@ env LANG=C /usr/bin/mrtg $Dir/192_168_4_48-R420-18$cfg
 env LANG=C /usr/bin/mrtg $Dir/192_168_4_49-R420-19$cfg
 env LANG=C /usr/bin/mrtg $Dir/192_168_4_50-R420-20$cfg
 env LANG=C /usr/bin/mrtg $Dir/192_168_4_55-ceb$cfg
+env LANG=C /usr/bin/mrtg $Dir/192_168_4_56-kvm01$cfg
