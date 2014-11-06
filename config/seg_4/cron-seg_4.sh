@@ -4,7 +4,7 @@
 
 # Difine directory
 Dir='/deploy/mrtg/config/seg_4'
-
+htmlDir='/deploy/mrtg/app/views/seg_4'
 
 # setting config-filename
 array=("192_168_4_32-R420-2"     # array[0]
@@ -44,15 +44,16 @@ num=0
 while [ $num -ne 30 ]
   do     
     # for trafic
-    echo "env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg"
+    env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
     # for la
-    echo "env LANG=C /usr/bin/mrtg ${Dir}/la/${array[${num}]}-la.cfg"
+    env LANG=C /usr/bin/mrtg ${Dir}/la/${array[${num}]}-la.cfg
     # for mem
-    echo "env LANG=C /usr/bin/mrtg ${Dir}/mem/${array[${num}]}-mem.cfg"
+    env LANG=C /usr/bin/mrtg ${Dir}/mem/${array[${num}]}-mem.cfg
     # for hdd
-    echo "env LANG=C /usr/bin/mrtg ${Dir}/hdd/${array[${num}]}-hdd.cfg"
+    env LANG=C /usr/bin/mrtg ${Dir}/hdd/${array[${num}]}-hdd.cfg
     
     num=`expr $num + 1`
-
   done
+nkf -w --overwrite `find $htmlDir/ -name "*.html"`
+
 exit
