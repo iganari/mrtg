@@ -4,7 +4,7 @@
 
 # Difine directory
 Dir='/deploy/mrtg/config/seg_4'
-
+htmlDir='/deploy/mrtg/app/views/seg_4'
 
 # setting config-filename
 array=("192_168_4_32-R420-2"     # array[0]
@@ -53,6 +53,7 @@ while [ $num -ne 30 ]
     env LANG=C /usr/bin/mrtg ${Dir}/hdd/${array[${num}]}-hdd.cfg
     
     num=`expr $num + 1`
-
   done
+nkf -w --overwrite `find $htmlDir/ -name "*.html"`
+
 exit
