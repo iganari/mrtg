@@ -42,12 +42,15 @@ array=("192_168_4_32-R420-2"         # array[0]
        "192_168_4_202-nrt02"         # array[32]
        "192_168_4_204-ceb01"         # array[33]
        "192_168_4_205-ceb02"         # array[34]
+       "192_168_4_205-ceb02"         # array[35]
+       "192_168_4_1-aucfan-esu2-1"   # array[36]
+       "192_168_4_2-aucfan-esu2-2"   # array[36]
 
        ) 
 
 
 num=0
-while [ $num -ne 35 ]                # array[ i + 1 ]
+while [ $num -ne 37 ]                # array[ i + 1 ]
   do     
     # for trafic
     env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
