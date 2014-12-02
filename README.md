@@ -36,4 +36,10 @@ cp -a ./script/source/post-merge ./.git/hooks/
 基本的はプロジェクトを設置後に一度実行するだけでよい。
 
 
+### nkfのインストール
+MRTGが生成するhtmlはデフォルトでeuc-jpなので、utf-8に変換するコマンドが仕込んである。
+そのコマンド(nkf)を予めyumのbaserepoからインストールしておく
 
+```
+$ sudo yum install nkf
+```
