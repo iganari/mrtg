@@ -1,5 +1,6 @@
 *.ok
 *_l
+*_l_*
 *.swp
 *.png
 *.old
