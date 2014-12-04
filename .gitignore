@@ -6,4 +6,4 @@
 *.old
 *.log
 *.html
-!index.html
+!index*.html
