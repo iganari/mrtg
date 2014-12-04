@@ -32,14 +32,28 @@ array=("192_168_3_31-R610_1"          # array[0]
        "192_168_3_37-R410_5"          # array[22]
        "192_168_3_38-R410_6"          # array[23]
        "192_168_3_39-R410_7"          # array[24]
+       "192_168_3_165-ws19"           # array[25]
+       "192_168_3_166-ws20"           # array[26]
+       "192_168_3_167-ws21"           # array[27]
+       "192_168_3_168-ws22"           # array[28]
+       "192_168_3_169-ws23"           # array[29]
+       "192_168_3_170-ws24"           # array[30]
+       "192_168_3_171-ws25"           # array[31]
+       "192_168_3_176-ws26"           # array[32]
+       "192_168_3_177-ws27"           # array[33]
+       "192_168_3_178-ws28"           # array[34]
+       "192_168_3_179-ws29"           # array[35]
+       "192_168_3_180-ws30"           # array[36]
+       "192_168_3_181-ws31"           # array[37]
+       "192_168_3_182-ws32"           # array[38]
        ) 
 
 
 num=0
-while [ $num -ne 25 ]                # array[ i + 1 ]
+while [ $num -ne 39 ]                # array[ i + 1 ]
   do     
-    # for trafic
-    env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
+#    # for trafic
+#    env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
     # for la
     env LANG=C /usr/bin/mrtg ${Dir}/la/${array[${num}]}-la.cfg
     # for mem
