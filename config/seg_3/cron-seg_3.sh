@@ -52,8 +52,8 @@ array=("192_168_3_31-R610_1"          # array[0]
 num=0
 while [ $num -ne 39 ]                # array[ i + 1 ]
   do     
-#    # for trafic
-#    env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
+    # for trafic
+    env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
     # for la
     env LANG=C /usr/bin/mrtg ${Dir}/la/${array[${num}]}-la.cfg
     # for mem
