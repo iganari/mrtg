@@ -10,12 +10,19 @@ htmlDir='/deploy/mrtg/app/views/seg_2'
 array=("192_168_2_159-mad"            # array[0]
        "192_168_2_160-bcn"            # array[]
        "192_168_2_150-aucuniv01"      # array[]
-       "192_168_2_151-aucuniv02"      # array[]
+       "192_168_2_55-jfk"             # array[]
+       "192_168_2_155-ssl10"          # array[]
+       "192_168_2_156-jfk02"          # array[]
+       "192_168_2_157-ws33"           # array[]
+       "192_168_2_147-sfo"            # array[]
+       "192_168_2_247-sfo01"          # array[]
+       "192_168_2_248-sfo02"          # array[]
+       "192_168_2_249-sfo03"          # array[10]
        ) 
 
 
 num=0
-while [ $num -ne 4 ]                # array[ i + 1 ]
+while [ $num -ne 11 ]                # array[ i + 1 ]
   do     
     # for trafic
     env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
