@@ -7,13 +7,15 @@ Dir='/deploy/mrtg/config/seg_2'
 htmlDir='/deploy/mrtg/app/views/seg_2'
 
 # setting config-filename
-array=("192_168_2_159-mad"          # array[0]
+array=("192_168_2_159-mad"            # array[0]
        "192_168_2_160-bcn"            # array[]
+       "192_168_2_150-aucuniv01"      # array[]
+       "192_168_2_151-aucuniv02"      # array[]
        ) 
 
 
 num=0
-while [ $num -ne 2 ]                # array[ i + 1 ]
+while [ $num -ne 4 ]                # array[ i + 1 ]
   do     
     # for trafic
     env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
