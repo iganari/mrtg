@@ -6,6 +6,7 @@ Dir='/deploy/mrtg/config'
 */5 * * * *  sh $Dir/seg_2/cron-seg_2.sh 
 */5 * * * *  sh $Dir/seg_3/cron-seg_3.sh ; sh $Dir/seg_3/cron-seg_3-router.sh
 */5 * * * *  sh $Dir/seg_4/cron-seg_4.sh ; sh $Dir/seg_4/cron-seg_4-router.sh
+*/5 * * * *  sh $Dir/seg_101/cron-seg_101.sh 
 # */5 * * * *  LANG=C /usr/bin/mrtg $Dir/seg_4/tr/192_168_4_46-pws09-tr.cfg
 
 # 0r
