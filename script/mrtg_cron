@@ -7,39 +7,4 @@ Dir='/deploy/mrtg/config'
 2-59/5 * * * *  sh $Dir/seg_3/cron-seg_3.sh ; sh $Dir/seg_3/cron-seg_3-router.sh
 3-59/5 * * * *  sh $Dir/seg_4/cron-seg_4.sh ; sh $Dir/seg_4/cron-seg_4-router.sh
 4-59/5 * * * *  sh $Dir/seg_101/cron-seg_101.sh 
-# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/seg_4/tr/192_168_4_46-pws09-tr.cfg
 
-# 0r
-#  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_tr.cfg
-#  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_la.cfg
-#  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_mem.cfg
-#  */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_0r_hdd.cfg
-
-# 01r
-# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_tr.cfg
-# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_la.cfg
-# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_mem.cfg
-# */5 * * * *  LANG=C /usr/bin/mrtg $Dir/mrtg_01r_hdd.cfg
-
-###  
-###  # 6r
-###  */5     * * * *  root LANG=C /usr/bin/mrtg /etc/mrtg/mrtg_6r_tr.cfg
-###  03-59/5 * * * *  root rm -f /var/lib/mrtg/thresh/6r/la/mrtg_6r_la.cfg.la-ws23-aucfan.maxI
-###  */5     * * * *  root LANG=C /usr/bin/mrtg /etc/mrtg/mrtg_6r_la.cfg >> /tmp/mrtg-cron.log 2>>/tmp/mrtg-cron-error.log 
-###  */5     * * * *  root LANG=C /usr/bin/mrtg /etc/mrtg/mrtg_6r_mem.cfg
-###  */5     * * * *  root LANG=C /usr/bin/mrtg /etc/mrtg/mrtg_6r_hdd.cfg
-###  
-###  
-###  */5 * * * * root LANG=C /usr/bin/mrtg /etc/mrtg/mrtg_lassi_la.cfg
-###  */5 * * * * root LANG=C /usr/bin/mrtg /etc/mrtg/mrtg_lassi_hdd.cfg
-###  
-###  
-###  */5 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_iikawa_la.cfg
-###  */5 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_iikawa_tr.cfg
-###  
-###  # * * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_mysql_ssl01.cfg
-###  #   * * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_mysql_cs0x.cfg
-###  #   * * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_mysql_R410-51_52.cfg
-###  # * * * * * root /usr/bin/mrtg /etc/mrtg/mrtg_mysql_R410-x.cfg
-###  
-###  # */5 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg.cfg --lock-file /var/lock/mrtg/mrtg_l --confcache-file /var/lib/mrtg/mrtg.ok
