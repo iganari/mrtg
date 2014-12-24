@@ -7,7 +7,7 @@ Dir='/deploy/mrtg/config/seg_2'
 htmlDir='/deploy/mrtg/app/views/seg_2'
 
 # setting config-filename
-array=("192_168_2_14-aucfan-gmo-14"   # array[0]
+array=("192_168_2_14-afn-bitisle-14"   # array[0]
        ) 
 
 
