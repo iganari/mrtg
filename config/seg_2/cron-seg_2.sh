@@ -60,12 +60,11 @@ array=("192_168_2_159-mad"            # array[0]
        "192_168_2_237-lax01"          # array[50]
        "192_168_2_238-lax02"          # array[50]
        "192_168_2_239-lax03"          # array[50]
-       "192_168_2_132-ps51"           # array[53]
        ) 
 
 
 num=0
-while [ $num -ne 54 ]                # array[ i + 1 ]
+while [ $num -ne 53 ]                # array[ i + 1 ]
   do     
     # for trafic
     env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
