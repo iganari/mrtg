@@ -1,19 +1,18 @@
 #!/bin/bash -x
 #
-# 2014/11/06
+# 2015/01/01
 
 # Difine directory
-Dir='/deploy/mrtg/config/seg_4'
-htmlDir='/deploy/mrtg/app/views/seg_4'
+Dir='/deploy/mrtg/config/seg_101'
+htmlDir='/deploy/mrtg/app/views/seg_101'
 
 # setting config-filename
-array=("192_168_4_1-aucfan-esu2-1"   # array[0]
-       "192_168_4_2-aucfan-esu2-2"   # array[1]
+array=("192_168_101_1-aucfan-humax-1"   # array[0]
        ) 
 
 
 num=0
-while [ $num -ne 2 ]                # array[ i + 1 ]
+while [ $num -ne 1 ]                # array[ i + 1 ]
   do     
     # for trafic
     env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
