@@ -22,8 +22,8 @@ LIST='serverlist-seg_101'
 
 while read SERVER_LIST 
   do     
-#    # for trafic
-#    env LANG=C /usr/bin/mrtg ${Dir}/tr/${array[${num}]}-tr.cfg
+    # for trafic
+    env LANG=C /usr/bin/mrtg ${Dir}/tr/${SERVER_LIST}-tr.cfg
     # for la
     env LANG=C /usr/bin/mrtg ${Dir}/la/${SERVER_LIST}-la.cfg
     # for mem
@@ -31,7 +31,7 @@ while read SERVER_LIST
     # for hdd
     env LANG=C /usr/bin/mrtg ${Dir}/hdd/${SERVER_LIST}-hdd.cfg
     
-  done < ${LIST}
+  done < ${Dir}/${LIST}
 nkf -w --overwrite `find $htmlDir/ -name "*.html"`
 
 exit
