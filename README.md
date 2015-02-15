@@ -6,16 +6,22 @@ mrtg.gitとmrtg_html.gitの統合
 いらないファイルの削除
 
 
-
-## ファイル設置後にやること
-
 ### MRTGのインストール
 
 ```
 $ sudo yum install mrtg
 $ sudo rm -rfv /etc/mrtg
-$ sudo rm  -fv /etc/cron.d/mrtg
+$ sudo rm -fv  /etc/cron.d/mrtg
+$ sudo rm -rfv /var/www/mrtg/
 ```
+
+### プログラムの設置
+
+```
+$ cd /deplop
+$ git clone git@github.com:iganari/mrtg.git
+```
+
 ### httpdの設置
 
 ```
